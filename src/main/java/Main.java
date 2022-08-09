@@ -8,6 +8,6 @@ public class Main
         pokerGame s = new pokerGame(5);
         s.deal(p);
         p.showHand();
-        s.evaluate(p);
+        System.out.println(s.evaluate(p));
     }
 }

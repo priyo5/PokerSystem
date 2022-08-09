@@ -42,7 +42,7 @@ public class pokerGame
         p.setHand(hand);
     }
 
-    public void evaluate(Player p)
+    public String evaluate(Player p)
     {
         boolean flush = true;
         boolean straight = false;
@@ -101,45 +101,45 @@ public class pokerGame
 
         if (straight && flush)
         {
-            System.out.println("You have: Straight flush");
+            return "You have: Straight flush";
         }
 
         if (same.contains(4))
         {
-            System.out.println("You have: Four of a kind");
+            return "You have: Four of a kind";
         }
 
         if (same.contains(3) && same.contains(2))
         {
-            System.out.println("You have: Full house");
+            return "You have: Full house";
         }
 
         if (flush && !straight)
         {
-            System.out.println("You have: Flush");
+            return "You have: Flush";
         }
 
         if (straight && !flush)
         {
-            System.out.println("You have: Straight");
+            return "You have: Straight";
         }
 
         if (same.contains(3) && !same.contains(2))
         {
-            System.out.println("You have: Three of a kind");
+            return "You have: Three of a kind";
         }
 
         Set<Integer> distinct = new HashSet<>(same);
         if (Collections.frequency(same, 2) == 4)
         {
-            System.out.println("You have: Two pair");
+            return "You have: Two pair";
         }
 
         if (same.contains(2) && same.contains(1))
         {
-            System.out.println("You have: One pair");
+            return "You have: One pair";
         }
-        System.out.println("You have: High card");
+        return "You have: High card";
     }
 
     public Card[] getDeck()
