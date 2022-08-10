@@ -21,7 +21,7 @@ public class EvaluatonTests
         straightFlush.add(new Card('7', 'S'));
 
         this.p.setHand(straightFlush);
-        assertEquals("Straight flush", s.evaluate(p));
+        assertEquals("You have: Straight flush", s.evaluate(p));
     }
 
     //evaluate of Four Of A Kind case
@@ -37,7 +37,7 @@ public class EvaluatonTests
         fourOfAKind.add(new Card('5','C'));
 
         this.p.setHand(fourOfAKind);
-        assertEquals("Four of a kind", s.evaluate(p));
+        assertEquals("You have: Four of a kind", s.evaluate(p));
     }
 
     //evaluate of Full House case
@@ -53,7 +53,7 @@ public class EvaluatonTests
         fullHouse.add(new Card('K','S'));
 
         this.p.setHand(fullHouse);
-        assertEquals("Full house", s.evaluate(p));
+        assertEquals("You have: Full house", s.evaluate(p));
     }
 
 
@@ -70,7 +70,7 @@ public class EvaluatonTests
         flush.add(new Card('3','D'));
 
         this.p.setHand(flush);
-        assertEquals("Flush", s.evaluate(p));
+        assertEquals("You have: Flush", s.evaluate(p));
     }
 
     //evaluate of Stright case
@@ -86,7 +86,7 @@ public class EvaluatonTests
         straight.add(new Card('9','C'));
 
         this.p.setHand(straight);
-        assertEquals("Straight", s.evaluate(p));
+        assertEquals("You have: Straight", s.evaluate(p));
     }
 
     //evaluate of Three Of A Kind case
@@ -102,7 +102,7 @@ public class EvaluatonTests
         threeOfAKind.add(new Card('2','S'));
 
         this.p.setHand(threeOfAKind);
-        assertEquals("Three of a kind", s.evaluate(p));
+        assertEquals("You have: Three of a kind", s.evaluate(p));
     }
 
     //evaluate of Two Pair case
@@ -118,7 +118,7 @@ public class EvaluatonTests
         twoPair.add(new Card('2','C'));
 
         this.p.setHand(twoPair);
-        assertEquals("Two pair", s.evaluate(p));
+        assertEquals("You have: Two pair", s.evaluate(p));
     }
 
     //evaluate of One Pair case
@@ -134,7 +134,7 @@ public class EvaluatonTests
         onePair.add(new Card('4','C'));
 
         this.p.setHand(onePair);
-        assertEquals("One pair", s.evaluate(p));
+        assertEquals("You have: One pair", s.evaluate(p));
     }
 
     //evaluate of High Card case
@@ -150,6 +150,6 @@ public class EvaluatonTests
         highCard.add(new Card('3','C'));
 
         this.p.setHand(highCard);
-        assertEquals("High card", s.evaluate(p));
+        assertEquals("You have: High card", s.evaluate(p));
     }
 }

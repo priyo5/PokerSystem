@@ -2,9 +2,14 @@ import java.util.Random;
 
 public class Deck
 {
-    private Card[] deck;
+    private Card [] deck;
 
     public Deck()
+    {
+        init();
+    }
+
+    public void init()
     {
         String faces = "A23456789TJQK";
         String suits = "SDCH";
@@ -46,6 +51,12 @@ public class Deck
         java.lang.System.out.println("Deck shuffled!");
     }
 
+    public void reset()
+    {
+        this.deck = null;
+        init();
+    }
+
     public Card[] getDeck()
     {
         return deck;
@@ -60,7 +71,12 @@ public class Deck
     {
         for (int i = 0; i < deck.length; i++)
         {
-            java.lang.System.out.printf(deck[i]+" ");
+            System.out.printf(deck[i].toString());
+            if (i != deck.length-1)
+            {
+                System.out.printf(" | ");
+            }
         }
+        System.out.println();
     }
 }

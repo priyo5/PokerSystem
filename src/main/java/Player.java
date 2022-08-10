@@ -20,7 +20,11 @@ public class Player
         System.out.printf("Your hand is: ");
         for (int i = 0; i < hand.size(); i++)
         {
-            System.out.printf(hand.get(i).toString()+" ");
+            System.out.printf(hand.get(i).toString());
+            if (i != hand.size()-1)
+            {
+                System.out.printf(" | ");
+            }
         }
         System.out.println();
     }

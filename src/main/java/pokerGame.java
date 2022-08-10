@@ -1,47 +1,13 @@
 import java.util.*;
 
-public class pokerGame
+public class pokerGame extends Rules
 {
-    private int handsize;
-    private Deck deck;
-
     public pokerGame(int handsize)
     {
-        this.handsize = handsize;
-        this.deck = new Deck();
-        deck.shuffle();
+        super(handsize);
     }
 
-    public void shuffle()
-    {
-        this.deck.shuffle();
-    }
-
-    public void printDeck()
-    {
-        this.deck.printDeck();
-    }
-
-    //Deals a random hand to a player
-    public void deal(Player p)
-    {
-        System.out.println("Dealing a hand...");
-        List<Integer> chosen = new ArrayList<>();
-        List<Card> hand = new ArrayList<>(handsize);
-        int c = 0;
-        while(c < handsize)
-        {
-            int random = (int) (Math.random() * 52);
-            if (!chosen.contains(random))
-            {
-                hand.add(this.deck.getDeck()[random]);
-                chosen.add(random);
-                c++;
-            }
-        }
-        p.setHand(hand);
-    }
-
+    //implementation of abstract fucntion from Rules class
     public String evaluate(Player p)
     {
         boolean flush = true;
@@ -50,15 +16,15 @@ public class pokerGame
         //check for possible flush
         for (int i = 0; i < p.getHand().size()-1; i++)
         {
-            if (p.getHand().get(i).getSuit() != p.getHand().get(i+1).getSuit())
-            {
+            if (p.getHand().get(i).getSuit() != p.getHand().get(i + 1).getSuit()) {
                 flush = false;
+                break;
             }
         }
 
-        //check for matching cards in the deck
-        List<Integer> same = new ArrayList<>(handsize);
-        for(int i = 0; i < handsize; i++)
+        //checks for matching cards in the deck
+        List<Integer> same = new ArrayList<>(getHandsize());
+        for(int i = 0; i < getHandsize(); i++)
         {
             same.add(1);
         }
@@ -84,11 +50,12 @@ public class pokerGame
 
         for (int i = 0; i <= 9; i++)
         {
-            if (ranks[i] == 1 && ranks[i+1] == 1 && ranks[i+2] == 1 && ranks[i+3] == 1 && ranks[i+4] == 1)
-            {
+            if (ranks[i] == 1 && ranks[i + 1] == 1 && ranks[i + 2] == 1 && ranks[i + 3] == 1 && ranks[i + 4] == 1) {
                 straight = true;
+                break;
             }
         }
+
         //for ace under high rules
         if ((p.getHand().contains(new Card('A', 'S')) || p.getHand().contains(new Card('A', 'C')) || p.getHand().contains(new Card('A', 'D')) || p.getHand().contains(new Card('A', 'H')))
                 && (p.getHand().contains(new Card('T', 'S')) || p.getHand().contains(new Card('T', 'C')) || p.getHand().contains(new Card('T', 'D')) || p.getHand().contains(new Card('T', 'H')))
@@ -129,7 +96,6 @@ public class pokerGame
             return "You have: Three of a kind";
         }
 
-        Set<Integer> distinct = new HashSet<>(same);
         if (Collections.frequency(same, 2) == 4)
         {
             return "You have: Two pair";
@@ -140,10 +106,5 @@ public class pokerGame
             return "You have: One pair";
         }
         return "You have: High card";
-    }
-
-    public Card[] getDeck()
-    {
-        return this.deck.getDeck();
     }
 }
